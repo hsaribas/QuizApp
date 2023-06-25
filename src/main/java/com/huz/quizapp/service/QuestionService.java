@@ -23,6 +23,9 @@ public class QuestionService {
     }
 
     public List<Question> getAllQuestions() {
+        if (questionRepository.findAll().size() == 0) {
+            throw new RuntimeException(String.format(ErrorMessage.NOT_FOUND_ANY_QUESTION_MESSAGE));
+        }
 
         return questionRepository.findAll();
     }
@@ -31,6 +34,10 @@ public class QuestionService {
 
         return questionRepository.findQuestionById(id).orElseThrow(() ->
                 new RuntimeException(String.format(ErrorMessage.RESOURCE_NOT_FOUND_MESSAGE, id)));
+    }
+
+    public List<Question> getQuestionByCategory(String category) {
+        return questionRepository.findByCategory(category);
     }
 
     public void deleteQuestion(Long id) {

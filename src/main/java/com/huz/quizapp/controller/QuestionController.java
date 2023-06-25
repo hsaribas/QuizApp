@@ -25,16 +25,20 @@ public class QuestionController {
 
     @GetMapping("/all")
     public ResponseEntity<List<Question>> getAllQuestions() {
-        List<Question> allQuestions = questionService.getAllQuestions();
 
-        return ResponseEntity.ok(allQuestions);
+        return ResponseEntity.ok(questionService.getAllQuestions());
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<Question> getQuestionById(@PathVariable Long id) {
-        Question question = questionService.getQuestionById(id);
 
-        return ResponseEntity.ok(question);
+        return ResponseEntity.ok(questionService.getQuestionById(id));
+    }
+
+    @GetMapping("/{category}")
+    public ResponseEntity<List<Question>> getQuestionByCategory(@PathVariable String category) {
+
+        return ResponseEntity.ok(questionService.getQuestionByCategory(category));
     }
 
     @DeleteMapping("/delete/{id}")
