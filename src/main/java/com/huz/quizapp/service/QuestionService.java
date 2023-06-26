@@ -31,13 +31,16 @@ public class QuestionService {
     }
 
     public Question getQuestionById(Long id) {
-
         return questionRepository.findQuestionById(id).orElseThrow(() ->
                 new RuntimeException(String.format(ErrorMessage.RESOURCE_NOT_FOUND_MESSAGE, id)));
     }
 
     public List<Question> getQuestionByCategory(String category) {
         return questionRepository.findByCategory(category);
+    }
+
+    public List<Question> getRandomQuestionsByCategory(String category, int questionNum) {
+        return questionRepository.findRandomQuestionsByCategory(category, questionNum);
     }
 
     public void deleteQuestion(Long id) {

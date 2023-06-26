@@ -20,24 +20,21 @@ public class QuestionController {
     public ResponseEntity<String> addQuestion(@RequestBody Question question) {
         questionService.addQuestion(question);
 
-        return new ResponseEntity<>("Question Successfully Added", HttpStatus.CREATED);
+        return new ResponseEntity<>("Question Successfully Added", HttpStatus.OK);
     }
 
     @GetMapping("/all")
     public ResponseEntity<List<Question>> getAllQuestions() {
-
         return ResponseEntity.ok(questionService.getAllQuestions());
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<Question> getQuestionById(@PathVariable Long id) {
-
         return ResponseEntity.ok(questionService.getQuestionById(id));
     }
 
     @GetMapping("/{category}")
     public ResponseEntity<List<Question>> getQuestionByCategory(@PathVariable String category) {
-
         return ResponseEntity.ok(questionService.getQuestionByCategory(category));
     }
 
