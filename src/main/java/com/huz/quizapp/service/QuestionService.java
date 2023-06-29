@@ -39,10 +39,6 @@ public class QuestionService {
         return questionRepository.findByCategory(category);
     }
 
-    public List<Question> getRandomQuestionsByCategory(String category, int questionNum) {
-        return questionRepository.findRandomQuestionsByCategory(category, questionNum);
-    }
-
     public void deleteQuestion(Long id) {
         Question question = getQuestionById(id);
 
@@ -51,5 +47,9 @@ public class QuestionService {
         }
 
         questionRepository.delete(question);
+    }
+
+    public List<Question> getRandomQuestionsByCategory(String category, int questionNum) {
+        return questionRepository.findRandomQuestionsByCategory(category, questionNum);
     }
 }

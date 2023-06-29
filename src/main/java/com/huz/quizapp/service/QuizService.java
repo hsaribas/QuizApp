@@ -35,9 +35,9 @@ public class QuizService {
         List<Question> questions = quiz.get().getQuestions();
         List<QuestionDTO> DTOQuestions = new ArrayList<>();
 
-        for(Question q : questions){
+        for (Question q : questions) {
             QuestionDTO questionDTO = new QuestionDTO(q.getId(), q.getQuestionTitle(), q.getOption1(),
-                                                      q.getOption2(), q.getOption3(), q.getOption4());
+                    q.getOption2(), q.getOption3(), q.getOption4());
             DTOQuestions.add(questionDTO);
         }
 
