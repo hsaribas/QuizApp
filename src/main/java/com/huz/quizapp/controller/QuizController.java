@@ -1,6 +1,7 @@
 package com.huz.quizapp.controller;
 
 import com.huz.quizapp.dto.QuestionDTO;
+import com.huz.quizapp.dto.Answer;
 import com.huz.quizapp.service.QuizService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -27,5 +28,12 @@ public class QuizController {
     @GetMapping("/get/{id}")
     public ResponseEntity<List<QuestionDTO>> getQuiz(@PathVariable Long id) {
         return ResponseEntity.ok(quizService.getQuiz(id));
+    }
+
+    @PostMapping("/submit/{id}")
+    public ResponseEntity<String> submitQuiz(@PathVariable Long id, @RequestBody List<Answer> answers) {
+        int score = quizService.submitQuiz(id, answers);
+
+        return new ResponseEntity<>("Your score is: " + score, HttpStatus.OK);
     }
 }
