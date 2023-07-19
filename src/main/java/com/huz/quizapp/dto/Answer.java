@@ -11,5 +11,7 @@ import lombok.Setter;
 @NoArgsConstructor
 public class Answer {
 
+    private Integer id;
+
     private String response;
 }
