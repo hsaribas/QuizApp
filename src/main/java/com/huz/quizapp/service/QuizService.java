@@ -31,7 +31,7 @@ public class QuizService {
         quizRepository.save(quiz);
     }
 
-    public List<QuestionDTO> getQuiz(Long id) {
+    public List<QuestionDTO> getQuizQuestions(Long id) {
         Quiz quiz = quizRepository.findById(id).orElseThrow(() ->
                 new RuntimeException(ErrorMessage.RESOURCE_NOT_FOUND_MESSAGE));
         List<Question> questions = quiz.getQuestions();

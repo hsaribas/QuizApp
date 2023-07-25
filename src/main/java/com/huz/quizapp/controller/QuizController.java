@@ -26,8 +26,8 @@ public class QuizController {
     }
 
     @GetMapping("/get/{id}")
-    public ResponseEntity<List<QuestionDTO>> getQuiz(@PathVariable Long id) {
-        return ResponseEntity.ok(quizService.getQuiz(id));
+    public ResponseEntity<List<QuestionDTO>> getQuizQuestions(@PathVariable Long id) {
+        return ResponseEntity.ok(quizService.getQuizQuestions(id));
     }
 
     @PostMapping("/submit/{id}")
